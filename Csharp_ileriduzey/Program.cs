@@ -14,8 +14,8 @@ namespace Csharp_ileriduzey
             BinaryWriter bw = null; 
             try
             {
-                //belirtilen dosya yolundakı data klasorunu acıyor
-                //Filemode.append denırse varolanın uzerine yenısını ekler
+                //belirtilen dosya yolundakı data klasorunu acar
+                //Filemode.append varolanın uzerine yenısını ekler
                 bw = new BinaryWriter(new FileStream("C:\\vidobu\\data",FileMode.OpenOrCreate));
                 bw.Write("Binary writer ile yazılan data\n");
                 bw.Write(DateTime.Now.ToString());
@@ -35,12 +35,12 @@ namespace Csharp_ileriduzey
             var filepath = @"c:\vidobu\cs_file.txt";
             if (!File.Exists(filepath))
             {
-                File.Create(filepath).Close();//eger dosya ilgili dızınde yoksa dosyayı olustur ve kapatt..
+                File.Create(filepath).Close();//eger dosya ilgili dızınde yoksa dosyayı olustur ve kapat..
             }
             var text = "ewonewbfbewobfouwebfbwebf";
-            File.WriteAllText(filepath,text + Environment.NewLine); // environment 1 alt satıra iner
+            File.WriteAllText(filepath,text + Environment.NewLine); 
             var array = new[] { "Ocak", "Subat" };
-            File.AppendAllLines(filepath, array); //dizi elemanlarını dosyaya yazar
+            File.AppendAllLines(filepath, array); //dizi elemanlarını dosyaya yaz
 
             //------------------------------------------------------------------------------------------------  path
             var filepath2 = @"c:\vidobu\cs_file.txt";
@@ -49,15 +49,15 @@ namespace Csharp_ileriduzey
 
             //------------------------------------------------------------------------------------------------  filestream
             var filepath3 = @"c:\vidobu\cs_file.txt";
-            var fs = new FileStream(filepath3, FileMode.Open, FileAccess.ReadWrite); //dosyaya erişip okuma işlemi yapılacagını bıldırıyor
+            var fs = new FileStream(filepath3, FileMode.Open, FileAccess.ReadWrite); //dosyaya erişip okuma işlemi yapılacagını bıldırır
             var fi = new FileInfo(filepath3);//dosyadakı verının kac byte oldugu bılgısıne ulasılıyor
-            var byteArr = new byte[fi.Length];//dosya okuma ıcın byte turunden bır array gerekıyor
-            fs.Read(byteArr,0,byteArr.Length);//ıcerıgı arrayın uzunlugu kadar blok blok okuyor
+            var byteArr = new byte[fi.Length];//dosya okuma ıcın byte turunden bır array gerekır
+            fs.Read(byteArr,0,byteArr.Length);//ıcerıgı arrayın uzunlugu kadar blok blok okur
             Console.WriteLine(Encoding.UTF8.GetString(byteArr));
-            Console.WriteLine(new string('-',50));//50 tane tire
+            Console.WriteLine(new string('-',50));
             var str = "Filestream ile yazıldı";
             var strArr = Encoding.UTF8.GetBytes(str);
-            fs.Write(strArr,0,strArr.Length);//dosyaya ıcerık yazıyor
+            fs.Write(strArr,0,strArr.Length);//dosyaya ıcerık yazar
             fs.Close(); 
             fs.Dispose();
 
